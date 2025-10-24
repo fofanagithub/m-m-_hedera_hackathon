@@ -325,7 +325,7 @@ uvicorn apps.inference.src.infer_server:app --host 0.0.0.0 --port 8100
 
 
 
-Model artifacts are not committed to git; populate `simulator/rl/artifacts` before starting the server (see `simulator/rl/artifacts/README.md`).
+Model artifacts are committed to git; but you can also populate `simulator/rl/artifacts` before starting the server (see `simulator/rl/artifacts/README.md`).
 
 
 
