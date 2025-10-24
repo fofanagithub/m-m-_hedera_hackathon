@@ -157,7 +157,7 @@ Hedera's sub-cent, pre-quoted fees and ABFT finality let municipalities forecast
 
 
 
-4. Populate `simulator/rl/artifacts` with trained policy bundles before running the inference service. Copy the exported `.zip` and `.meta.json` pairs from your training run or download pre-trained assets, keeping the large files outside git history (see `simulator/rl/artifacts/README.md`).
+4. Populate `simulator/rl/artifacts` with trained policy bundles before running the inference service. Copy the exported `.zip` and `.meta.json` pairs from your training run or download pre-trained assets, keeping the large files outside git history (see `simulator/rl/artifacts/README.md`). The file `simulator/rl/artifacts` is not empty, it contains the required files, but you can also do the training on your side following the instructions step.
 
 
 
