@@ -23,27 +23,27 @@ Coordinated traffic and rail control with reinforcement-learning policies, Heder
 
 
 
-- `apps/backend` â€“ Node.js/Express API for ingesting sensor data, issuing control commands, and optionally persisting to Postgres and Hedera.
+- `apps/backend` : Node.js/Express API for ingesting sensor data, issuing control commands, and optionally persisting to Postgres and Hedera.
 
 
 
-- `apps/agents` â€“ Node.js workers that call the inference API, orchestrate control loops, and publish decisions to Hedera topics.
+- `apps/agents` : Node.js workers that call the inference API, orchestrate control loops, and publish decisions to Hedera topics.
 
 
 
-- `apps/inference` â€“ FastAPI service that serves trained RL policies for traffic lights and rail barriers.
+- `apps/inference` : FastAPI service that serves trained RL policies for traffic lights and rail barriers.
 
 
 
-- `simulator` â€“ Python simulators that stream mock traffic and rail events; `simulator/rl` holds training scripts and SUMO assets.
+- `simulator` : Python simulators that stream mock traffic and rail events; `simulator/rl` holds training scripts and SUMO assets.
 
 
 
-- `apps/web` â€“ Vite/React MapLibre UI for visualising live congestion.
+- `apps/web` : Vite/React MapLibre UI for visualising live congestion.
 
 
 
-- `docker-compose.yml` â€“ One-click stack (Postgres, backend, agents, inference, simulators).
+- `docker-compose.yml` : One-click stack (Postgres, backend, agents, inference, simulators).
 
 
 
@@ -665,59 +665,32 @@ Additional tuning knobs include `TRAFFIC_BATCH_LIMIT`, `RAIL_BATCH_LIMIT`, `AGEN
 
 
 
-- `POST /ingest` â€“ accept `{ kind: 'traffic' | 'rail', location, value }` measurements.
+- `POST /ingest` : accept `{ kind: 'traffic' | 'rail', location, value }` measurements.
 
 
 
-- `GET /ingest/next?kind=traffic|rail` â€“ retrieve the next pending measurement for an agent.
+- `GET /ingest/next?kind=traffic|rail` : retrieve the next pending measurement for an agent.
 
 
 
-- `GET /ingest/snapshot?kind=traffic|rail` â€“ latest value per location.
+- `GET /ingest/snapshot?kind=traffic|rail` : latest value per location.
 
 
 
-- `POST /control/traffic/set_plan` â€“ apply a traffic light plan (mock controller).
+- `POST /control/traffic/set_plan` : apply a traffic light plan (mock controller).
 
 
 
-- `POST /control/rail/set_barrier` â€“ open/close rail barriers (mock controller).
+- `POST /control/rail/set_barrier` : open/close rail barriers (mock controller).
 
 
 
-- `GET /health` â€“ service health probe.
+- `GET /health` : service health probe.
 
 
 
 - Inference service: `POST /traffic/infer`, `POST /rail/infer`, plus `/health` and Swagger UI under `/docs`.
 
-
-
-
-
-
-
-## Helpful Commands
-
-
-
-- `make up` / `make down` â€“ wrap `docker compose` start/stop.
-
-
-
-- `make logs` â€“ follow backend and agent logs together.
-
-
-
-- `make infer` â€“ run the inference API locally.
-
-
-
-- `make rl-smoke` â€“ quick SUMO environment smoke test.
-
-
-
-- `make rl-train` â€“ start the default traffic training script.
 
 
 
