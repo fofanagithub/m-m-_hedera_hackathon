@@ -589,11 +589,7 @@ Set `VITE_BACKEND_URL` and map provider keys (see below) before starting for liv
 
 
 
-- Keep inference policy bundles in `simulator/rl/artifacts`, but do not commit them; store or generate them per environment.
-
-
-
-- Run `git status` before pushing to ensure only source changes are staged.
+- Keep inference policy bundles in `simulator/rl/artifacts`.
 
 
 
