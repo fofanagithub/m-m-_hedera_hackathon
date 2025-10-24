@@ -1,0 +1,15 @@
+# Example sweep configuration for traffic-light training runs
+defaults:
+  total_timesteps: 200000
+  durations: [10, 20, 40]
+  max_steps: 1800
+  warmup_steps: 60
+
+search_space:
+  learning_rate: [0.0001, 0.0003, 0.001]
+  gamma: [0.95, 0.99]
+  clip_range: [0.1, 0.2]
+
+notes: |
+  Use this as a starting point when orchestrating multiple training runs
+  (e.g. via wandb or custom scripts). The main CLI lives in train_traffic.py.

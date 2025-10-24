@@ -1,0 +1,54 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: smartcity
+    ports: ["5432:5432"]
+
+  backend:
+    build: ./apps/backend
+    environment:
+      - DB_URL=${DB_URL}
+      - API_PORT=${API_PORT}
+      - INFERENCE_BASE_URL=${INFERENCE_BASE_URL}
+      - TRAFFIC_INFER_URL=${TRAFFIC_INFER_URL}
+      - RAIL_INFER_URL=${RAIL_INFER_URL}
+      - HEDERA_NETWORK=${HEDERA_NETWORK}
+      - HEDERA_ACCOUNT_ID=${HEDERA_ACCOUNT_ID}
+      - HEDERA_PRIVATE_KEY=${HEDERA_PRIVATE_KEY}
+      - HEDERA_TOPIC_TRAFFIC=${HEDERA_TOPIC_TRAFFIC}
+      - HEDERA_TOPIC_RAIL=${HEDERA_TOPIC_RAIL}
+    ports: ["8000:8000"]
+    depends_on: [db]
+
+  agents:
+    build: ./apps/agents
+    environment:
+      - BACKEND_BASE_URL=${BACKEND_BASE_URL}
+      - CONTROLLER_TRAFFIC_URL=${CONTROLLER_TRAFFIC_URL}
+      - CONTROLLER_RAIL_URL=${CONTROLLER_RAIL_URL}
+      - TRAFFIC_INFER_URL=${TRAFFIC_INFER_URL}
+      - RAIL_INFER_URL=${RAIL_INFER_URL}
+      - HEDERA_NETWORK=${HEDERA_NETWORK}
+      - HEDERA_ACCOUNT_ID=${HEDERA_ACCOUNT_ID}
+      - HEDERA_PRIVATE_KEY=${HEDERA_PRIVATE_KEY}
+      - HEDERA_TOPIC_TRAFFIC=${HEDERA_TOPIC_TRAFFIC}
+      - HEDERA_TOPIC_RAIL=${HEDERA_TOPIC_RAIL}
+    depends_on: [backend, inference]
+
+  inference:
+    build: ./apps/inference
+    environment:
+      - MODEL_PATH=/models/traffic_policy.zip
+      - MODEL_METADATA_PATH=/models/traffic_policy.meta.json
+      - RAIL_MODEL_PATH=/models/rail/rail_policy.zip
+      - RAIL_MODEL_METADATA_PATH=/models/rail/rail_policy.meta.json
+    volumes:
+      - ./simulator/rl/artifacts:/models
+    ports: ["8100:8100"]
+
+  simulator:
+    build: ./simulator
+    command: python traffic_sim.py --target http://backend:8000/ingest --rate 2
+    depends_on: [backend]

@@ -1,0 +1,44 @@
+{
+  "created_at": "2025-10-08T13:11:21.054664Z",
+  "sumo_config": "C:\\smartcity-agents\\simulator\\rl\\sumo\\configs\\cross.sumocfg",
+  "total_timesteps": 200000,
+  "max_steps": 1800,
+  "warmup_steps": 60,
+  "green_durations": [
+    10,
+    20,
+    40
+  ],
+  "action_mapping": [
+    {
+      "index": 0,
+      "phase": "NS",
+      "duration": 10
+    },
+    {
+      "index": 1,
+      "phase": "NS",
+      "duration": 20
+    },
+    {
+      "index": 2,
+      "phase": "NS",
+      "duration": 40
+    },
+    {
+      "index": 3,
+      "phase": "EW",
+      "duration": 10
+    },
+    {
+      "index": 4,
+      "phase": "EW",
+      "duration": 20
+    },
+    {
+      "index": 5,
+      "phase": "EW",
+      "duration": 40
+    }
+  ]
+}

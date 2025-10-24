@@ -1,0 +1,20 @@
+﻿{
+    "name":  "smartcity-agents",
+    "version":  "0.1.0",
+    "type":  "module",
+    "scripts":  {
+                    "dev":  "ts-node-esm src/index.ts",
+                    "build":  "tsc -p tsconfig.json",
+                    "start":  "node dist/index.js"
+                },
+    "dependencies":  {
+                         "@hashgraph/sdk":  "^2.50.0",
+                         "axios":  "^1.7.7",
+                         "dotenv":  "^16.4.5",
+                         "zod":  "^3.23.8"
+                     },
+    "devDependencies":  {
+                            "ts-node":  "^10.9.2",
+                            "typescript":  "^5.6.3"
+                        }
+}

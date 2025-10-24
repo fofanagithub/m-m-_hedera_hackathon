@@ -1,0 +1,22 @@
+{
+  "created_at": "2025-10-08T13:34:52.591288Z",
+  "env": {
+    "max_eta_ms": 60000,
+    "time_step_ms": 2000,
+    "close_lead_ms": 20000,
+    "fail_penalty": -50.0,
+    "close_penalty": -0.01,
+    "success_reward": 5.0
+  },
+  "total_timesteps": 200000,
+  "action_mapping": [
+    {
+      "index": 0,
+      "barrier_state": "OPEN"
+    },
+    {
+      "index": 1,
+      "barrier_state": "CLOSE"
+    }
+  ]
+}
