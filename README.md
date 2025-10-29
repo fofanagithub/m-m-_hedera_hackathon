@@ -22,7 +22,7 @@ Coordinated traffic and rail control with reinforcement-learning policies, Heder
 
 
 
-[Pitch Deck](Pitch Deck.pdf)
+The Pitch Deck is also available on the root.
 
 
 
