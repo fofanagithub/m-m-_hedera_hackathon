@@ -101,7 +101,7 @@ Hedera's sub-cent, pre-quoted fees and ABFT finality let municipalities forecast
 
 
 
-1. Review `.env` and update credentials or duplicate it to a private override such as `.env.local` before editing. For the hackathon judges, you can find my testnet account and my key on my Dorahack profile.
+1. Review `.env` and update credentials or duplicate it to a private override such as `.env.local` before editing.
 
 
 
